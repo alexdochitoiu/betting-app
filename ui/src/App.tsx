@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import { apiUrl } from "./global";
-
-type Event = {
-  event_id: string;
-  event_name: string;
-  odds: number;
-};
+import { EventType } from "./types";
+import { EventRow } from "./components/Event";
+import { EventsWrapper } from "./components/EventsWrapper";
+import { Modal } from "./components/Modal";
 
 function App() {
-  const [events, setEvents] = useState<Event[]>([]);
+  const [events, setEvents] = useState<EventType[]>([]);
+  const [selectedEvent, setSelectedEvent] = useState<EventType>();
 
   useEffect(() => {
     fetch(`${apiUrl}/api/events`)
@@ -21,11 +19,24 @@ function App() {
 
   return (
     <>
-      {events.map((event) => (
-        <div>
-          {event.event_name} - {event.odds}
-        </div>
-      ))}
+      <EventsWrapper>
+        {events.map((event) => (
+          <EventRow
+            key={event.event_id}
+            event={event}
+            onPlaceBetClick={() => setSelectedEvent(event)}
+          />
+        ))}
+      </EventsWrapper>
+      <Modal
+        open={Boolean(selectedEvent)}
+        onClose={() => setSelectedEvent(undefined)}
+        onSubmit={(bet) =>
+          alert(
+            `Bet placed successfully on ${selectedEvent?.event_name}. Amount: ${bet}$`
+          )
+        }
+      />
     </>
   );
 }
