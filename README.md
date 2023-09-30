@@ -1,6 +1,23 @@
 # betting-app
 
 Online betting dashboard
+### Technologies used:
+#### Server:
+```
+- Node
+- Typescript
+- Express
+- Postgres
+- JWT
+```
+
+#### UI:
+```
+- Vite
+- Typescript
+- React
+- Styled-components
+```
 
 ---
 
