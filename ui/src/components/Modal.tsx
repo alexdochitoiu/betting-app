@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { Button } from "./Button";
 
@@ -66,14 +66,14 @@ export const Modal = ({ open, onClose, onSubmit }: ModalProps) => {
       <ModalContent>
         <ModalCloseButton onClick={onClose}>X</ModalCloseButton>
         <StyledPlaceBet>
-          Choose your bet
+          Choose your bet:
           <input
             type="number"
             value={bet}
             min="1"
             max="9999"
             onChange={(e) => setBet(e.currentTarget.value)}
-          />
+          />$
         </StyledPlaceBet>
         <Button onClick={handleSubmit}>Place bet</Button>
       </ModalContent>

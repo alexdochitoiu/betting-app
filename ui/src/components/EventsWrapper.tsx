@@ -11,9 +11,15 @@ export const EventsWrapper = ({ children }: { children: ReactNode }) => {
   return (
     <StyledEventsWrapper>
       <StyledEvent>
-        <div><b>Event name</b></div>
-        <div><b>Odds</b></div>
-        <div><b>Place bet</b></div>
+        <div>
+          <b>Event name</b>
+        </div>
+        <div>
+          <b>Odds</b>
+        </div>
+        <div>
+          <b>Place bet</b>
+        </div>
       </StyledEvent>
       {children}
     </StyledEventsWrapper>
